@@ -117,3 +117,12 @@ docker run -d -p 80:80 --name frontend-service tamhk349/frontend:latest
 
 ### Kiểm tra truy cập:
 Mở trình duyệt và truy cập vào: `http://localhost:80` (hoặc `http://localhost`) để sử dụng hệ thống quản lý thiết bị.
+
+---
+
+## 7. Triển khai Frontend trên Render
+- **Loại dịch vụ:** Static Site
+- **Tên dịch vụ:** `web-235733-app`
+- **URL công khai:** [https://web-235733-app.onrender.com](https://web-235733-app.onrender.com)
+- **Cấu hình môi trường:**
+  - `VITE_API_BASE_URL`: `https://api-235733.onrender.com/api`
