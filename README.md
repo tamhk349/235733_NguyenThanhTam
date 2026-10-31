@@ -138,3 +138,16 @@ Mở trình duyệt và truy cập vào: `http://localhost:80` (hoặc `http://l
 - **Cấu hình môi trường:**
   - `PORT`: `5000`
   - `MONGO_URI`: Kết nối cơ sở dữ liệu MongoDB Atlas
+
+---
+
+## 9. Bảng thông tin nộp bài
+
+| Trường thông tin | Nội dung cung cấp |
+| :--- | :--- |
+| **Link_GitHub** | [https://github.com/tamhk349/235733_NguyenThanhTam](https://github.com/tamhk349/235733_NguyenThanhTam) |
+| **Link_Docker_Backend** | [https://hub.docker.com/r/tamhk349/backend](https://hub.docker.com/r/tamhk349/backend) |
+| **Link_Docker_Frontend** | [https://hub.docker.com/r/tamhk349/frontend](https://hub.docker.com/r/tamhk349/frontend) |
+| **Link_Render_App** | [https://web-235733-app.onrender.com](https://web-235733-app.onrender.com) |
+| **Link_Render_API** | [https://api-235733.onrender.com/api/devices](https://api-235733.onrender.com/api/devices) |
+| **Link_Data_MongoDB** | Database: `235733_NguyenThanhTam`, Collection: `devices` (Host: `cluster0.p5qklmz.mongodb.net`) |
