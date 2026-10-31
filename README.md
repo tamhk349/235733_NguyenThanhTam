@@ -126,3 +126,15 @@ Mở trình duyệt và truy cập vào: `http://localhost:80` (hoặc `http://l
 - **URL công khai:** [https://web-235733-app.onrender.com](https://web-235733-app.onrender.com)
 - **Cấu hình môi trường:**
   - `VITE_API_BASE_URL`: `https://api-235733.onrender.com/api`
+
+---
+
+## 8. Triển khai Backend API trên Render
+- **Loại dịch vụ:** Web Service
+- **Tên dịch vụ:** `api-235733`
+- **URL công khai:** [https://api-235733.onrender.com](https://api-235733.onrender.com)
+- **Endpoint kiểm tra sức khỏe:** [https://api-235733.onrender.com/health](https://api-235733.onrender.com/health)
+- **Endpoint API thiết bị:** [https://api-235733.onrender.com/api/devices](https://api-235733.onrender.com/api/devices)
+- **Cấu hình môi trường:**
+  - `PORT`: `5000`
+  - `MONGO_URI`: Kết nối cơ sở dữ liệu MongoDB Atlas

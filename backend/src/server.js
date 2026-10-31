@@ -21,6 +21,19 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Tuyến đường mặc định giới thiệu API
+app.get(['/', '/api'], (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'Hệ thống Quản lý Thiết bị Phòng học - Backend API',
+    author: 'Nguyễn Thanh Tâm - 235733',
+    endpoints: {
+      health: '/health',
+      devices: '/api/devices'
+    }
+  });
+});
+
 // Endpoint kiểm tra sức khỏe hệ thống (Health Check)
 app.get('/health', (req, res) => {
   const dbStatus = mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected';
