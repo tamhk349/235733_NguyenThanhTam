@@ -26,22 +26,22 @@ Xây dựng ứng dụng quản lý thiết bị phòng học gồm frontend, ba
 ├── .gitignore          # Cấu hình bỏ qua các tệp không cần thiết và bảo mật
 ├── README.md           # Tài liệu hướng dẫn và mô tả dự án
 ├── backend/            # Mã nguồn backend (Node.js & Express API)
+│   ├── .dockerignore   # Loại bỏ .env và node_modules khi build Docker
 │   ├── .env.example    # Mẫu cấu hình biến môi trường
+│   ├── Dockerfile      # Cấu hình đóng gói container Docker cho backend
 │   ├── package.json    # Cấu hình dự án và dependencies của backend
-│   └── server.js       # Tệp khởi chạy server
+│   └── src/            # Thư mục mã nguồn chính (config, controllers, models, routes, server.js)
 └── frontend/           # Mã nguồn frontend (React)
     ├── .env.example    # Mẫu cấu hình biến môi trường
     ├── index.html      # Trang HTML chính
     ├── package.json    # Cấu hình dự án và dependencies của frontend
     ├── vite.config.js  # Cấu hình Vite bundler
-    └── src/
-        ├── App.jsx     # Giao diện chính của ứng dụng
-        └── main.jsx    # Điểm khởi chạy React DOM
+    └── src/            # Thư mục giao diện và components
 ```
 
 ---
 
-## 4. Hướng dẫn cài đặt và chạy chương trình
+## 4. Hướng dẫn cài đặt và chạy chương trình (Local)
 
 ### Yêu cầu môi trường
 - Đã cài đặt **Node.js** (khuyến nghị phiên bản LTS) và **npm**.
@@ -74,3 +74,38 @@ Xây dựng ứng dụng quản lý thiết bị phòng học gồm frontend, ba
    ```bash
    npm run dev
    ```
+
+---
+
+## 5. Hướng dẫn chạy Backend bằng Docker
+
+### Đóng gói Docker Image cho Backend:
+```bash
+docker build -t tamhk349/backend:latest ./backend
+```
+
+### Chạy Container Backend:
+```bash
+docker run -d -p 5000:5000 \
+  -e PORT=5000 \
+  -e MONGO_URI="mongodb+srv://s235733_db_user:<db_password>@cluster0.p5qklmz.mongodb.net/235733_NguyenThanhTam?retryWrites=true&w=majority" \
+  --name backend-service \
+  tamhk349/backend:latest
+```
+
+### Kiểm tra container hoạt động:
+Truy cập endpoint kiểm tra sức khỏe của hệ thống:
+```bash
+curl http://localhost:5000/health
+```
+Kết quả trả về:
+```json
+{
+  "status": "OK",
+  "message": "Backend server đang hoạt động bình thường",
+  "database": {
+    "status": "Connected",
+    "name": "235733_NguyenThanhTam"
+  }
+}
+```
