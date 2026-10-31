@@ -32,7 +32,10 @@ Xây dựng ứng dụng quản lý thiết bị phòng học gồm frontend, ba
 │   ├── package.json    # Cấu hình dự án và dependencies của backend
 │   └── src/            # Thư mục mã nguồn chính (config, controllers, models, routes, server.js)
 └── frontend/           # Mã nguồn frontend (React)
+    ├── .dockerignore   # Loại bỏ node_modules và dist khi build Docker
     ├── .env.example    # Mẫu cấu hình biến môi trường
+    ├── Dockerfile      # Cấu hình đóng gói multi-stage Docker với Nginx
+    ├── nginx.conf      # Cấu hình Nginx phục vụ Single Page Application
     ├── index.html      # Trang HTML chính
     ├── package.json    # Cấu hình dự án và dependencies của frontend
     ├── vite.config.js  # Cấu hình Vite bundler
@@ -93,19 +96,24 @@ docker run -d -p 5000:5000 \
   tamhk349/backend:latest
 ```
 
-### Kiểm tra container hoạt động:
-Truy cập endpoint kiểm tra sức khỏe của hệ thống:
+### Kiểm tra container backend:
 ```bash
 curl http://localhost:5000/health
 ```
-Kết quả trả về:
-```json
-{
-  "status": "OK",
-  "message": "Backend server đang hoạt động bình thường",
-  "database": {
-    "status": "Connected",
-    "name": "235733_NguyenThanhTam"
-  }
-}
+
+---
+
+## 6. Hướng dẫn chạy Frontend bằng Docker
+
+### Đóng gói Docker Image cho Frontend:
+```bash
+docker build -t tamhk349/frontend:latest ./frontend
 ```
+
+### Chạy Container Frontend:
+```bash
+docker run -d -p 80:80 --name frontend-service tamhk349/frontend:latest
+```
+
+### Kiểm tra truy cập:
+Mở trình duyệt và truy cập vào: `http://localhost:80` (hoặc `http://localhost`) để sử dụng hệ thống quản lý thiết bị.
